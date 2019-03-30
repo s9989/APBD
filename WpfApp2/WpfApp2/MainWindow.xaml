@@ -5,23 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterOwner"
-        Title="MainWindow" Height="450" Width="800">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        WindowStartupLocation="CenterScreen"
+        Title="Zadanie1" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <Button Name="OkButton" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" MinHeight="80" Background="Red">1</Button>
-            <Button Name="Name2" Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Background="Black"></Button>
-            <Button Name="Name3" Grid.Row="0" Grid.Column="3" Background="Yellow">2</Button>
-            <Button Name="Name4" Grid.Row="2" Grid.Column="2" Background="Blue" MinHeight="60">3</Button>
+        <Button Name="Button1" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" MinHeight="80" Background="Red" Click="Button1_Click">Zadanie 2</Button>
+        <Button Name="Button2" Grid.Row="0" Grid.Column="1" Grid.RowSpan="4" Background="Black" />
+        <Button Name="Button3" Grid.Row="0" Grid.Column="3" Background="Yellow" Click="Button3_Click">Zadanie 3 i 4</Button>
+        <Button Name="Button4" Grid.Row="2" Grid.Column="2" Grid.RowSpan="2" Background="Blue" MinHeight="60"></Button>
+        
     </Grid>
 </Window>

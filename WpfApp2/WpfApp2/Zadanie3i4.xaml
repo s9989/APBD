@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfApp2.Zadanie3i4"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Zadanie3i4" Height="450" Width="800">
+    <StackPanel>
+        <DataGrid MouseDoubleClick="StudentsDataGrid_MouseDoubleClick" MouseLeftButtonUp="StudentsDataGrid_MouseLeftButtonUp" CanUserAddRows="False" IsReadOnly="True" x:Name="StudentsDataGrid" Height="200"></DataGrid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+            <Label HorizontalAlignment="Right">Imię</Label>
+            <TextBox Width="500" x:Name="Imie"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+            <Label HorizontalAlignment="Right">Nazwisko</Label>
+            <TextBox Width="500" x:Name="Nazwisko"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+            <Label HorizontalAlignment="Right">Nr indeksu</Label>
+            <TextBox Width="500" x:Name="NrIndeksu"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+            <Button x:Name="Dodaj" Padding="5 0" Width="100" Margin="0 0 300 0" Click="Dodaj_Click">Dodaj</Button>
+            <Button x:Name="Usun" Padding="5 0" Width="100" Click="Usun_Click">Usuń</Button>
+        </StackPanel>
+    </StackPanel>
+</Window>

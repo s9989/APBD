@@ -1,0 +1,23 @@
+﻿<Window x:Class="WpfApp2.Zadanie2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Zadanie2" Height="200" Width="500">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Label HorizontalAlignment="Left">Wybierz status</Label>
+            <ComboBox HorizontalAlignment="Center" Width="200" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem IsSelected="True">Student</ComboBoxItem>
+                <ComboBoxItem>Skreślony</ComboBoxItem>
+                <ComboBoxItem>Absolwent</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <Label Margin="10 10 10 0">Student</Label>
+        <TextBox x:Name="TextBox1" Margin="10 0 10 10">Student</TextBox>
+        <Button HorizontalAlignment="Right" Margin="10" Padding="10 5" Click="Button_Click">Zamknij</Button>
+    </StackPanel>
+</Window>

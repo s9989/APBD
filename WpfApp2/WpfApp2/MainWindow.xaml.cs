@@ -22,30 +22,18 @@ namespace WpfApp2
     {
         public MainWindow()
         {
-            InitializeComponent();
-
-            
-            OkButton.Content = "Ok";
-//            Name1.Content = "Name1";
-            OkButton.Click += OkButton_Click; ;
-            Name3.Click += Name3_Click;
-            
+            InitializeComponent();            
         }
 
-        private void Name3_Click(object sender, RoutedEventArgs e)
+        private void Button1_Click(object sender, RoutedEventArgs e)
         {
-            Button b = (Button)sender;
-            if ((String)b.Content == "Changed")
-            {
-                b.Content = "Ok";
-            } else {
-                b.Content = "Changed";
-            }
+            Window w = new Zadanie2();
+            w.ShowDialog();
         }
 
-        private void OkButton_Click(object sender, RoutedEventArgs e)
+        private void Button3_Click(object sender, RoutedEventArgs e)
         {
-            Window w = new Window1();
+            Window w = new Zadanie3i4();
             w.ShowDialog();
         }
     }
