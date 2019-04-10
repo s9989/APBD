@@ -35,7 +35,7 @@
 
             <GridSplitter Grid.Column="1" Width="5" Background="Gray"></GridSplitter>
 
-            <DataGrid x:Name="StudentsDataGrid" Grid.Column="2"></DataGrid>
+            <DataGrid x:Name="StudentsDataGrid" Grid.Column="2" MouseDoubleClick="NewPersonMenuItem_Click"></DataGrid>
 
         </Grid>
     </DockPanel>
