@@ -1,0 +1,15 @@
+C:\Users\Piotr Gago\Desktop\Cwiczenia4\Cwiczenia4\bin\Debug\Cwiczenia4.exe.config
+C:\Users\Piotr Gago\Desktop\Cwiczenia4\Cwiczenia4\bin\Debug\Cwiczenia4.exe
+C:\Users\Piotr Gago\Desktop\Cwiczenia4\Cwiczenia4\bin\Debug\Cwiczenia4.pdb
+C:\Users\Piotr Gago\Desktop\Cwiczenia4\Cwiczenia4\obj\Debug\Cwiczenia4.csprojAssemblyReference.cache
+C:\Users\Piotr Gago\Desktop\Cwiczenia4\Cwiczenia4\obj\Debug\MainWindow.g.cs
+C:\Users\Piotr Gago\Desktop\Cwiczenia4\Cwiczenia4\obj\Debug\App.g.cs
+C:\Users\Piotr Gago\Desktop\Cwiczenia4\Cwiczenia4\obj\Debug\Cwiczenia4_MarkupCompile.cache
+C:\Users\Piotr Gago\Desktop\Cwiczenia4\Cwiczenia4\obj\Debug\Cwiczenia4_MarkupCompile.lref
+C:\Users\Piotr Gago\Desktop\Cwiczenia4\Cwiczenia4\obj\Debug\MainWindow.baml
+C:\Users\Piotr Gago\Desktop\Cwiczenia4\Cwiczenia4\obj\Debug\Cwiczenia4.g.resources
+C:\Users\Piotr Gago\Desktop\Cwiczenia4\Cwiczenia4\obj\Debug\Cwiczenia4.Properties.Resources.resources
+C:\Users\Piotr Gago\Desktop\Cwiczenia4\Cwiczenia4\obj\Debug\Cwiczenia4.csproj.GenerateResource.cache
+C:\Users\Piotr Gago\Desktop\Cwiczenia4\Cwiczenia4\obj\Debug\Cwiczenia4.csproj.CoreCompileInputs.cache
+C:\Users\Piotr Gago\Desktop\Cwiczenia4\Cwiczenia4\obj\Debug\Cwiczenia4.exe
+C:\Users\Piotr Gago\Desktop\Cwiczenia4\Cwiczenia4\obj\Debug\Cwiczenia4.pdb
