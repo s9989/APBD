@@ -11,5 +11,11 @@ namespace Cwiczenia4.Models
         public int IdStudent { get; set; }
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
+        public bool Plec { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Nazwisko} {Imie}";
+        }
     }
 }
