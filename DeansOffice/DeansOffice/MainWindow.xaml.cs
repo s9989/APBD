@@ -63,5 +63,37 @@ namespace DeansOffice
             DataGrid dataGrid = (DataGrid)sender;
             SelectedStudentsCount.Content = dataGrid.SelectedItems.Count;
         }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            var editWindow = new EditWindow();
+            editWindow.Show();
+            editWindow.Closed += EditWindow_Closed;
+        }
+
+        private void EditWindow_Closed(object sender, EventArgs e)
+        {
+            EditWindow editWindow = (EditWindow)sender;
+            
+            if (0 != editWindow.CurrentStudent.IdStudent)
+            {
+                if (!ListaStudentow.Contains(editWindow.CurrentStudent))
+                {
+                    ListaStudentow.Add(editWindow.CurrentStudent);
+                }
+            }
+        }
+
+        private void StudentsDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataGrid dataGrid = (DataGrid)sender;
+
+            Student student = (Student)dataGrid.SelectedItem;
+
+            var editWindow = new EditWindow();
+            editWindow.InsertStudent(student);
+            editWindow.Show();
+            editWindow.Closed += EditWindow_Closed;
+        }
     }
 }

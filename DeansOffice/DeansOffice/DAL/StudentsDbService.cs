@@ -14,7 +14,7 @@ namespace DeansOffice.DAL
 
         public List<Student> AllStudents()
         {
-            var ListaStudentow = new List<Student>();
+            var students = new List<Student>();
 
             using (SqlConnection Connection = new SqlConnection(ConnectionString))
             {
@@ -42,14 +42,78 @@ namespace DeansOffice.DAL
                                 Name = DataReader["Name"].ToString()
                             };
 
-                            ListaStudentow.Add(student);
+                            students.Add(student);
                         }
                     }
 
                 }
             }
 
-            return ListaStudentow;
+            return students;
+        }
+
+        public List<Study> AllStudies()
+        {
+            var studies = new List<Study>();
+
+            using (SqlConnection Connection = new SqlConnection(ConnectionString))
+            {
+                Connection.Open();
+
+                using (SqlCommand Command = new SqlCommand("select * from apbd.Studies", Connection))
+                {
+                    using (SqlDataReader DataReader = Command.ExecuteReader())
+                    {
+                        while (DataReader.Read())
+                        {
+                            studies.Add(new Study
+                            {
+                                IdStudies = (int)DataReader["IdStudies"],
+                                Name = DataReader["Name"].ToString()
+                            });
+
+                        }
+                    }
+
+                }
+            }
+
+            return studies;
+        }
+
+        public int AddStudent(Student student)
+        {
+            using (SqlConnection Connection = new SqlConnection(ConnectionString))
+            {
+                Connection.Open();
+                
+                using (SqlCommand Command = new SqlCommand(
+                    "insert into apbd.Student " +
+                        "(FirstName, LastName, Address, IndexNumber, IdStudies) " +
+                    "values (@FirstName, @LastName, @Address, @IndexNumber, @IdStudies)", Connection))
+                {
+                    Command.Parameters.AddWithValue("@FirstName", student.FirstName);
+                    Command.Parameters.AddWithValue("@LastName", student.LastName);
+                    Command.Parameters.AddWithValue("@Address", student.Address);
+                    Command.Parameters.AddWithValue("@IndexNumber", student.IndexNumber);
+                    Command.Parameters.AddWithValue("@IdStudies", student.Study.IdStudies);
+                    Command.ExecuteNonQuery();
+
+
+                    Command.CommandText = "select MAX(IdStudent) as id from apbd.Student";
+                    using (SqlDataReader DataReader = Command.ExecuteReader())
+                    {
+                        if (DataReader.Read())
+                        {
+                            return (int)DataReader["id"];
+                        }
+                    }
+                            
+                }
+
+            }
+
+            return 0;
         }
 
         public void RemoveStudents(List<Student> toRemove)

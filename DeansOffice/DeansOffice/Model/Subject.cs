@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DeansOffice.Model
 {
-    class Subject
+    public class Subject
     {
         public int IdSubject { get; set; }
         public string Name { get; set; }

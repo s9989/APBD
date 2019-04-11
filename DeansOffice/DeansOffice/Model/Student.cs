@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DeansOffice.Model
 {
-    class Student
+    public class Student
     {
-        public int IdStudent { get; set; }
+        public int IdStudent { get; set; } = 0;
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Address { get; set; }
+        public string Address { get; set; } = "Warszawa";
         public string IndexNumber { get; set; }
         public int IdStudies { get; set; }
         public Study Study { get; set; }

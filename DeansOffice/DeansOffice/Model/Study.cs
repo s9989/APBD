@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DeansOffice.Model
 {
-    class Study
+    public class Study
     {
         public int IdStudies { get; set; }
         public string Name { get; set; }
