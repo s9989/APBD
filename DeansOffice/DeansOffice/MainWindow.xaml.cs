@@ -23,13 +23,13 @@ namespace DeansOffice
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<Student> ListaStudentow;
+        public ObservableCollection<Student> ListaStudentow;
 
         public MainWindow()
         {
+            InitializeData();
             InitializeComponent();
 
-            InitializeData();
             StudentsDataGrid.ItemsSource = ListaStudentow;
 
         }
@@ -66,7 +66,7 @@ namespace DeansOffice
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var editWindow = new EditWindow();
+            var editWindow = new EditWindow(false);
             editWindow.Show();
             editWindow.Closed += EditWindow_Closed;
         }
@@ -75,12 +75,22 @@ namespace DeansOffice
         {
             EditWindow editWindow = (EditWindow)sender;
             
-            if (0 != editWindow.CurrentStudent.IdStudent)
+            if (0 != editWindow.CurrentStudent.IdStudent && false == editWindow.editMode)
             {
                 if (!ListaStudentow.Contains(editWindow.CurrentStudent))
                 {
                     ListaStudentow.Add(editWindow.CurrentStudent);
                 }
+            }
+
+            if (0 != editWindow.CurrentStudent.IdStudent && true == editWindow.editMode)
+            {
+                ListaStudentow.Where(w => w.IdStudent == editWindow.CurrentStudent.IdStudent).ToList().ForEach(s => {
+                    s.FirstName = editWindow.CurrentStudent.FirstName;
+                    s.LastName = editWindow.CurrentStudent.LastName;
+                    s.IndexNumber = editWindow.CurrentStudent.IndexNumber;
+                    s.Address = editWindow.CurrentStudent.Address;
+                });
             }
         }
 
@@ -90,7 +100,7 @@ namespace DeansOffice
 
             Student student = (Student)dataGrid.SelectedItem;
 
-            var editWindow = new EditWindow();
+            var editWindow = new EditWindow(true);
             editWindow.InsertStudent(student);
             editWindow.Show();
             editWindow.Closed += EditWindow_Closed;

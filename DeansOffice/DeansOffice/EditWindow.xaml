@@ -15,7 +15,7 @@
         </Menu>
         <Grid DockPanel.Dock="Bottom" Width="200" HorizontalAlignment="Right" Margin="20">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <Button Padding="20 4" Click="AddButton_Click">Dodaj</Button>
+                <Button x:Name="ConfirmButton" Padding="20 4" Click="ConfirmButton_Click">Dodaj</Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Padding="20 4" Click="DeleteButton_Click">Usuń</Button>
@@ -41,11 +41,13 @@
                     x:Name="StudyComboBox" 
                     Width="200" 
                     Margin="20 0 0 0" 
-                    SelectionChanged="Selection_Changed" 
-                    ItemsSource="{Binding Path=Study}" 
-                    DisplayMemberPath="Name"
-                    SelectedValuePath="Name"
-                    SelectedValue="{Binding Path=Study}" />
+                    SelectionChanged="Selection_Changed">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding Name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 10">
                 <Label>Przedmioty</Label>

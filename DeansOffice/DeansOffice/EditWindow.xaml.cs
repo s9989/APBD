@@ -23,15 +23,21 @@ namespace DeansOffice
     /// </summary>
     public partial class EditWindow : Window
     {
+        public bool editMode = false;
         public Student CurrentStudent { get; set; }
         ObservableCollection<Study> studies;
 
-        public EditWindow()
+        public EditWindow(bool edit = false)
         {
+            editMode = edit;
             InitializeComponent();
             CurrentStudent = new Student();
 
             InitializeData();
+            if (editMode)
+            {
+                ConfirmButton.Content = "Zapisz";
+            }
             StudyComboBox.ItemsSource = studies;
         }
 
@@ -51,18 +57,40 @@ namespace DeansOffice
             
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             var DbProvider = new StudentsDbService();
-            CurrentStudent.IdStudent = DbProvider.AddStudent(CurrentStudent);
-            //MessageBox.Show(CurrentStudent.IdStudent.ToString());
+
+            if (editMode)
+            {
+                DbProvider.UpdateStudent(CurrentStudent);
+            } else
+            {
+                CurrentStudent.IdStudent = DbProvider.AddStudent(CurrentStudent);
+            }
+            
             Close();
         }
 
         public void InsertStudent(Student student)
         {
-            CurrentStudent = student;
-            UpdateStudent();
+            CurrentStudent.IdStudent = student.IdStudent;
+            UpdateForm(student);
+        }
+
+        private void UpdateForm(Student student)
+        {
+            FirstNameInput.Text = student.FirstName;
+            LastNameInput.Text = student.LastName;
+            IndexNumberInput.Text = student.IndexNumber;
+            foreach (Study item in StudyComboBox.Items)
+            {
+                if (((Study)item).IdStudies == student.Study.IdStudies)
+                {
+                    StudyComboBox.SelectedIndex = StudyComboBox.Items.IndexOf(item);
+                }
+            }
+            //StudyComboBox.SelectedItem = student.Study;
         }
 
         private void UpdateStudent()

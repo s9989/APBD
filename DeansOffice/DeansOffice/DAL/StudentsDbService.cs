@@ -116,6 +116,29 @@ namespace DeansOffice.DAL
             return 0;
         }
 
+        public void UpdateStudent(Student student)
+        {
+            using (SqlConnection Connection = new SqlConnection(ConnectionString))
+            {
+                Connection.Open();
+
+                using (SqlCommand Command = new SqlCommand(
+                    "update apbd.Student " +
+                        "set FirstName = @FirstName, LastName = @LastName, Address = @Address, IndexNumber = @IndexNumber, IdStudies = @IdStudies " +
+                        "where IdStudent = @IdStudent", Connection))
+                {
+                    Command.Parameters.AddWithValue("@IdStudent", student.IdStudent);
+                    Command.Parameters.AddWithValue("@FirstName", student.FirstName);
+                    Command.Parameters.AddWithValue("@LastName", student.LastName);
+                    Command.Parameters.AddWithValue("@Address", student.Address);
+                    Command.Parameters.AddWithValue("@IndexNumber", student.IndexNumber);
+                    Command.Parameters.AddWithValue("@IdStudies", student.Study.IdStudies);
+                    Command.ExecuteNonQuery();
+
+                }
+            }
+        }
+
         public void RemoveStudents(List<Student> toRemove)
         {
             using (SqlConnection Connection = new SqlConnection(ConnectionString))

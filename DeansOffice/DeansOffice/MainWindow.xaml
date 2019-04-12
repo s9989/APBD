@@ -39,9 +39,11 @@
                 CanUserAddRows="False" 
                 IsReadOnly="True" 
                 SelectionChanged="StudentsDataGrid_Selected"
-                MouseDoubleClick="StudentsDataGrid_MouseDoubleClick">
+                MouseDoubleClick="StudentsDataGrid_MouseDoubleClick"
+                ItemsSource="{Binding ListaStudentow, UpdateSourceTrigger=PropertyChanged}">
 
                 <DataGrid.Columns>
+                    <DataGridTextColumn Header="IdStudent" Binding="{Binding IdStudent}" />
                     <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" />
                     <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}"/>
                     <DataGridTextColumn Header="Numer indeksu" Binding="{Binding IndexNumber}"/>
