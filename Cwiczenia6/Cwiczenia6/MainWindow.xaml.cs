@@ -42,9 +42,9 @@ namespace Cwiczenia6
                 Job = "CLERK",
                 Mgr = 7902,
                 HireDate = new DateTime(1980, 12, 17),
-                Sal=800,
-                Comm=0,
-                Deptno=20
+                Sal = 800,
+                Comm = 0,
+                Deptno = 20
             });
 
             Emps.Add(new Emp
@@ -185,7 +185,7 @@ namespace Cwiczenia6
                 Ename = "FORD",
                 Job = "ANALYST",
                 Mgr = 7566,
-                HireDate= new DateTime(1981, 12, 3),
+                HireDate = new DateTime(1981, 12, 3),
                 Sal = 3000,
                 Comm = 0,
                 Deptno = 20
@@ -205,9 +205,9 @@ namespace Cwiczenia6
 
             Depts.Add(new Dept
             {
-                Deptno=10,
-                Dname= "ACCOUNTING",
-                Loc= "NEW YORK"
+                Deptno = 10,
+                Dname = "ACCOUNTING",
+                Loc = "NEW YORK"
             });
 
             Depts.Add(new Dept
@@ -246,48 +246,263 @@ namespace Cwiczenia6
             DataGrid.ItemsSource = result.ToList();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs ev)
+        public static String implodeEmps(List<Emp> emps)
         {
-            // 8 DataGrid.ItemsSource = Emps.OrderBy(e => e.Ename).ToList();
-            /* 2 var result = from e in Emps
-                         select new
-                         {
-                             EMPLOYEE = e.Empno + e.Ename
-                         };
+            String result = "";
+
+            foreach (Emp emp in emps)
+            {
+                result = result + emp.Ename + ", ";
+            }
+
+            return result;
+        }
+
+        public static String implodeDeps(List<Dept> depts)
+        {
+            String result = "";
+
+            foreach (Dept dept in depts)
+            {
+                result = result + dept.Dname + ", ";
+            }
+
+            return result;
+        }
+
+        private void Simple_8(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Posortuj wszystkie dane tabeli EMP według ENAME.";
+
+            DataGrid.ItemsSource = Emps.OrderBy(e => e.Ename).ToList();
+        }
+
+        private void Simple_2(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Połącz EMPNO i nazwisko, opatrz je nagłówkiem EMPLOYEE.";
+
+            var result = from e in Emps select new { EMPLOYEE = e.Empno + e.Ename };
             DataGrid.ItemsSource = result.ToList();
-            */
-            // 9 DataGrid.ItemsSource = Emps.OrderByDescending(e => e.HireDate).ToList();
+        }
 
-            // 14 DataGrid.ItemsSource = Emps.Where(emp => emp.Sal > 1000 && emp.Sal < 2000).ToList();
-            // 16 DataGrid.ItemsSource = Emps.Where(e => e.Ename.StartsWith("S"));
-            // 19 DataGrid.ItemsSource = Emps.Where(emp => emp.Sal < 1000 || emp.Sal > 2000).ToList();
+        private void Simple_9(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Posortuj malejąco wszystkie dane tabeli EMP według daty ich zatrudnienia począwszy od ostatnio zatrudnionych.";
 
-            // 22 DataGrid.ItemsSource = Emps.Where(emp => emp.Job == "CLERK" && emp.Sal >= 1000 && emp.Sal < 2000).ToList();
-            // 23 DataGrid.ItemsSource = Emps.Where(emp => emp.Job == "CLERK" || (emp.Sal >= 1000 && emp.Sal < 2000)).ToList();
+            DataGrid.ItemsSource = Emps.OrderByDescending(e => e.HireDate).ToList();
+        }
 
-            // 24 DataGrid.ItemsSource = Emps.Where(emp => emp.Job == "SALESMAN" || (emp.Job == "MANAGER" && emp.Sal > 1500)).ToList();
-            // 25 DataGrid.ItemsSource = Emps.Where(emp => (emp.Job == "SALESMAN" || emp.Job == "MANAGER") && emp.Sal > 1500).ToList();
+        private void Simple_14(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Wybierz dane tych pracowników, których zarobki mieszczą się pomiędzy 1000 a 2000.";
 
+            DataGrid.ItemsSource = Emps.Where(emp => emp.Sal > 1000 && emp.Sal < 2000).ToList();
+        }
 
-            // --- 
+        private void Simple_16(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Wybierz dane tych pracowników, których nazwiska zaczynają się na S.";
 
-            // 1 DataGrid.ItemsSource = Emps.Join(Depts, dept => dept.Deptno, emp => emp.Deptno, (emp, dept) => new DeptEmp(dept, emp)).ToList();
-            /* 4  DataGrid.ItemsSource = Emps
+            DataGrid.ItemsSource = Emps.Where(e => e.Ename.StartsWith("S"));
+        }
+
+        private void Simple_19(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Wybierz dane tych pracowników, których zarobki są poza przedziałem <1000,2000>.";
+
+            DataGrid.ItemsSource = Emps.Where(emp => emp.Sal < 1000 || emp.Sal > 2000).ToList();
+        }
+
+        private void Simple_22(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Wybierz dane tych pracowników zatrudnionych na stanowisku CLERK których zarobki SAL mieszczą się w przedziale < 1000.2000).";
+
+            DataGrid.ItemsSource = Emps.Where(emp => emp.Job == "CLERK" && emp.Sal >= 1000 && emp.Sal < 2000).ToList();
+        }
+
+        private void Simple_23(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Wybierz dane pracowników zatrudnionych na stanowisku CLERK albo takich, których zarobki SAL mieszczą się w przedziale<1000.2000).";
+
+            DataGrid.ItemsSource = Emps.Where(emp => emp.Job == "CLERK" || (emp.Sal >= 1000 && emp.Sal < 2000)).ToList();
+        }
+
+        private void Simple_24(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Wybierz wszystkich pracowników zatrudnionych na stanowisku MANAGER z pensją powyżej 1500 oraz wszystkich pracowników na stanowisku SALESMAN, niezależnie od pensji.";
+
+            DataGrid.ItemsSource = Emps.Where(emp => emp.Job == "SALESMAN" || (emp.Job == "MANAGER" && emp.Sal > 1500)).ToList();
+        }
+
+        private void Simple_25(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Wybierz wszystkich pracowników zatrudnionych na stanowisku MANAGER lub na stanowisku SALESMAN lecz zarabiających powyżej 1500.";
+
+            DataGrid.ItemsSource = Emps.Where(emp => (emp.Job == "SALESMAN" || emp.Job == "MANAGER") && emp.Sal > 1500).ToList();
+        }
+
+        private void Link_1(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Połącz dane z tabel EMP i DEPT przy pomocy INNER JOIN.";
+
+            DataGrid.ItemsSource = Emps.Join(Depts, dept => dept.Deptno, emp => emp.Deptno, (emp, dept) => new DeptEmp(dept, emp)).ToList();
+        }
+
+        private void Link_4(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Dla pracowników o miesięcznej pensji powyżej 1500 podaj ich nazwiska, miejsca usytuowania ich departamentów oraz nazwy tych departamentów.";
+
+            DataGrid.ItemsSource = Emps
                 .Where(emp => emp.Sal > 1500)
                 .Join(Depts, dept => dept.Deptno, emp => emp.Deptno, (emp, dept) => new { Name = emp.Ename, Loc = dept.Loc, Dname = dept.Dname })
                 .ToList();
-                */
+        }
 
-            /* 5 DataGrid.ItemsSource = Emps
+        private void Link_5(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Wybierz pracowników zatrudnionych w Dallas.";
+
+            DataGrid.ItemsSource = Emps
                 .Join(Depts, dept => dept.Deptno, emp => emp.Deptno, (emp, dept) => new DeptEmp(dept, emp))
                 .Where(empdep => empdep.Loc == "DALLAS")
                 .ToList();
-                */
-            DataGrid.ItemsSource = Depts
-                .Where(dept => dept.Deptno == 30 || dept.Deptno == 10)
-                .Join(Emps, dept => dept.Deptno, emp => emp.Deptno, (dept, emp) => new { emp.Job, dept.Deptno })
-                .GroupBy(emp => emp.Job)
+        }
+
+        private void Link_3(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Wybierz nazwiska wszystkich pracowników wraz z numerami i nazwami departamentów w których są zatrudnieni.";
+
+            DataGrid.ItemsSource = Emps
+                .Join(Depts, dept => dept.Deptno, emp => emp.Deptno, (emp, dept) => new
+                {
+                    Ename = emp.Ename,
+                    Deptno = dept.Deptno,
+                    Dname = dept.Dname
+                })
                 .ToList();
+        }
+
+        private void Link_6(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Wypisz dane wszystkich działów oraz ich pracowników tak, aby dane działu pojawiły się, nawet jeśli nie ma w dziale żadnego pracownika.";
+
+            DataGrid.ItemsSource = Depts
+                .GroupJoin(Emps, emp => emp.Deptno, dept => dept.Deptno, (dept, emps) => new
+                {
+                    Dname = dept.Dname,
+                    Emps = implodeEmps(emps.ToList())
+                })
+                .ToList();
+        }
+
+        private void Group_4(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Oblicz średnie zarobki na każdym ze stanowisk pracy.";
+
+            DataGrid.ItemsSource = Emps
+                .GroupBy(emp => emp.Job)
+                .Select(empg => new { Job = empg.Key, AvgSal = Math.Round(empg.Average(e => e.Sal), 2) })
+                .ToList();
+        }
+
+        private void Group_3(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Znajdź ilu pracowników zatrudniono w departamencie 20.";
+
+            DataGrid.ItemsSource = Depts
+                .GroupJoin(Emps, emp => emp.Deptno, dept => dept.Deptno, (dept, emps) => new
+                {
+                    Deptno = dept.Deptno,
+                    EmpCount = emps.Count()
+                })
+                .Where(dept => dept.Deptno == 20)
+                .ToList();
+        }
+
+        private void Group_5(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Oblicz średnie zarobki na każdym ze stanowisk pracy z wyjątkiem stanowiska MANAGER.";
+
+            DataGrid.ItemsSource = Emps
+                .Where(emp => emp.Job != "MANAGER")
+                .GroupBy(emp => emp.Job)
+                .Select(empg => new { Job = empg.Key, AvgSal = Math.Round(empg.Average(e => e.Sal), 2) })
+                .ToList();
+        }
+
+        private void Group_7(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Dla każdego stanowiska oblicz maksymalne zarobki.";
+
+            DataGrid.ItemsSource = Emps
+                .GroupBy(emp => emp.Job)
+                .Select(empg => new { Job = empg.Key, MaxSal = empg.Max(e => e.Sal) })
+                .ToList();
+        }
+
+        private void Group_2(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Znajdź minimalne zarobki na stanowisku CLERK.";
+
+            DataGrid.ItemsSource = Emps
+                .Where(emp => emp.Job == "CLERK")
+                .GroupBy(emp => emp.Job)
+                .Select(empg => new { Job = empg.Key, MinSal = empg.Min(e => e.Sal) })
+                .ToList();
+        }
+
+        private void Subquery_1(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Znajdź pracowników z pensją równą minimalnemu zarobkowi w firmie.";
+
+            DataGrid.ItemsSource = Emps
+                .Where(emp => emp.Sal == Emps.Min(e => e.Sal))
+                .ToList();
+        }
+
+        private void Subquery_9(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Znajdź pracowników, których zarobki przekraczają najwyższe pensje z departamentu SALES.";
+
+            DataGrid.ItemsSource = Emps
+                .Where(emp => emp.Sal > Emps
+                            .Join(Depts, emp1 => emp1.Deptno, dept => dept.Deptno, (emp1, dept) => new DeptEmp(dept, emp1))
+                            .Where(deptemp => deptemp.Dname == "SALES")
+                            .Max(de => de.Sal)
+                )
+                .ToList();
+        }
+
+        private void Subquery_10(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Znajdź pracowników, którzy zarabiają powyżej średniej w ich departamentach.";
+
+            DataGrid.ItemsSource = Emps
+                .Where(emp => emp.Sal > Emps
+                            .Join(Depts, emp1 => emp1.Deptno, dept => dept.Deptno, (emp1, dept) => new DeptEmp(dept, emp1))
+                            .Where(deptemp => deptemp.Deptno == emp.Deptno)
+                            .Average(de => de.Sal)
+                )
+                .ToList();
+        }
+
+        private void Subquery_4(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Znajdź pracowników o najniższych zarobkach w ich departamentach.";
+
+            DataGrid.ItemsSource = Emps
+                .Where(emp => emp.Sal == Emps.Where(e => e.Deptno == emp.Deptno).Min(e1 => e1.Sal))
+                .ToList();
+        }
+
+        private void Subquery_8(object sender, RoutedEventArgs ev)
+        {
+            Query.Text = "Znajdź stanowisko, na którym są najwyższe średnie zarobki.";
+
+            DataGrid.ItemsSource = Emps
+                .GroupBy(emp => emp.Job)
+                .Select(empg => new { Job = empg.Key, MaxSal = empg.Max(e => e.Sal) })
+                .Where(eg => eg.MaxSal == Emps.Where(e1 => e1.Job == eg.Job).Max(e2 => e2.Sal));
         }
     }
 }

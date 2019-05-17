@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cwiczenia6"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="950">
+        Title="MainWindow" Height="600" Width="950">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -20,28 +20,38 @@
         </DataGrid>
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="10">
-                <Button Margin="5" Padding="4" Click="Button_Click_1">Zapytanie 1</Button>
-                <Button Margin="5" Padding="4">Zapytanie 2</Button>
-                <Button Margin="5" Padding="4">Zapytanie 3</Button>
-                <Button Margin="5" Padding="4">Zapytanie 4</Button>
-                <Button Margin="5" Padding="4">Zapytanie 5</Button>
-                <Button Margin="5" Padding="4">Zapytanie 6</Button>
-                <Button Margin="5" Padding="4">Zapytanie 7</Button>
-                <Button Margin="5" Padding="4">Zapytanie 8</Button>
-                <Button Margin="5" Padding="4">Zapytanie 9</Button>
-                <Button Margin="5" Padding="4">Zapytanie 10</Button>
+                <Button Margin="5" Padding="4" Click="Simple_8">Proste 8</Button>
+                <Button Margin="5" Padding="4" Click="Simple_2">Proste 2</Button>
+                <Button Margin="5" Padding="4" Click="Simple_9">Proste 9</Button>
+                <Button Margin="5" Padding="4" Click="Simple_14">Proste 14</Button>
+                <Button Margin="5" Padding="4" Click="Simple_16">Proste 16</Button>
+                <Button Margin="5" Padding="4" Click="Simple_19">Proste 19</Button>
+                <Button Margin="5" Padding="4" Click="Simple_22">Proste 22</Button>
+                <Button Margin="5" Padding="4" Click="Simple_23">Proste 23</Button>
+                <Button Margin="5" Padding="4" Click="Simple_24">Proste 24</Button>
+                <Button Margin="5" Padding="4" Click="Simple_25">Proste 25</Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="10">
-                <Button Margin="5" Padding="4">Zapytanie 11</Button>
-                <Button Margin="5" Padding="4">Zapytanie 12</Button>
-                <Button Margin="5" Padding="4">Zapytanie 13</Button>
-                <Button Margin="5" Padding="4">Zapytanie 14</Button>
-                <Button Margin="5" Padding="4">Zapytanie 15</Button>
-                <Button Margin="5" Padding="4">Zapytanie 16</Button>
-                <Button Margin="5" Padding="4">Zapytanie 17</Button>
-                <Button Margin="5" Padding="4">Zapytanie 18</Button>
-                <Button Margin="5" Padding="4">Zapytanie 19</Button>
-                <Button Margin="5" Padding="4">Zapytanie 20</Button>
+                <Button Margin="5" Padding="4" Click="Link_1">Łaczenie 1</Button>
+                <Button Margin="5" Padding="4" Click="Link_4">Łaczenie 4</Button>
+                <Button Margin="5" Padding="4" Click="Link_5">Łaczenie 5</Button>
+                <Button Margin="5" Padding="4" Click="Link_3">Łaczenie 3</Button>
+                <Button Margin="5" Padding="4" Click="Link_6">Łaczenie 6</Button>
+                <Button Margin="5" Padding="4" Click="Group_4">Grupowanie 4</Button>
+                <Button Margin="5" Padding="4" Click="Group_3">Grupowanie 3</Button>
+                <Button Margin="5" Padding="4" Click="Group_5">Grupowanie 5</Button>
+                <Button Margin="5" Padding="4" Click="Group_7">Grupowanie 7</Button>
+                <Button Margin="5" Padding="4" Click="Group_2">Grupowanie 2</Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="10">
+                <Button Margin="5" Padding="4" Click="Subquery_1">Podzapytania 1</Button>
+                <Button Margin="5" Padding="4" Click="Subquery_9">Podzapytania 9</Button>
+                <Button Margin="5" Padding="4" Click="Subquery_10">Podzapytania 10</Button>
+                <Button Margin="5" Padding="4" Click="Subquery_4">Podzapytania 13</Button>
+                <Button Margin="5" Padding="4" Click="Subquery_8">Podzapytania 8</Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="10">
+                <TextBox Name="Query" Width="844" Height="37" TextWrapping="Wrap"></TextBox>
             </StackPanel>
         </StackPanel>
     </Grid>
